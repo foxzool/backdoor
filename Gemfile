@@ -28,6 +28,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Unicorn as the app server
 # gem 'unicorn'
+gem 'puma'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -41,6 +42,26 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'spring-commands-rspec'
 
   gem 'rspec-rails'
+
+  gem 'factory_girl_rails'
+
+  group :development, :test do
+    gem 'guard'
+    gem 'guard-bundler'
+    gem 'guard-rails'
+    gem 'guard-rspec'
+    gem 'guard-puma' # to have Guard use the Puma server rather than WEBrick
+  end
+end
+
+group :test do
+  gem 'fuubar'
+  gem 'shoulda-matchers'
+  gem 'faker'
+  gem 'database_cleaner'
+  gem "capybara-webkit"
+  gem 'simplecov', require: false
 end
